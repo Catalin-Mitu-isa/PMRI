@@ -43,7 +43,8 @@ Instrumente pentu analiza:
 - [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns);
 - [Ghidra](https://ghidra-sre.org/);
 - [x64dbg](https://x64dbg.com/);
-- [Cuckoo Sandbox](http://docs.cuckoosandbox.org/en/latest/installation/).
+- [Cuckoo Sandbox](http://docs.cuckoosandbox.org/en/latest/installation/);
+- [API Monitor](http://www.rohitab.com/apimonitor).
 
 ## Pasi
 
