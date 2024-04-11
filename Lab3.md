@@ -33,7 +33,7 @@ VBoxManage debugvm <uuid> dumpvmcore --filename=<numelefisierului>.elf
 
 #### Disk dump
 
-VirtualBox ofera aceasta posibilitate, dar doar pentru un disk, adica e nevoie de unit snapshot-urile si discul de baza in unul singur.
+VirtualBox ofera aceasta posibilitate, dar doar pentru un disk, adica e nevoie de <span id="unit-snapshoturile">unit snapshot-urile</span> si discul de baza in unul singur.
 
 Salvati starea masinii si vi se va face disponibil butonul de clonare a masinii virtuale.
 
@@ -86,3 +86,20 @@ Am incercat Arsenal Image Mounter, acolo am putut accesa dosarele din Windows. -
 - Analiza fisierelor prefetch (X:\\Windows\\Prefetch) ne pot indica orele rularii malware-ului, dosarele si fiserele ce le-a atins (Doar primele 10s a rularii). Instrumente utile:  [PFCmd.exe](https://www.sans.org/tools/pecmd/) si [WinPrefetchView](https://www.nirsoft.net/utils/win_prefetch_view.html).
 - Analiza fisierelor [_HIVE_](https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry-hives). Se pot incarca in [regedit](https://forsenergy.com/en-us/regedit32/html/b3a394dd-0ee9-496b-bf16-cc90bf18289d.htm) sau e posibil de utilizat instrumentul [RegRipper](https://github.com/keydet89/RegRipper3.0).
 - Analiza jurnalelor de evenimente. Ele sunt localizate in X:\Windows\System32\winevt\Logs\. [FullEventLogView](http://www.nirsoft.net/utils/full_event_log_view.html)
+
+## Informatii suplimentare
+
+#### Micsorarea fisierului VDI a masinii virtuale (pentru cei ce sunt limitati in spatiu pe calculator):
+
+1. Utilizati [MiniTool Partition Wizard](https://www.partitionwizard.com/) pentru a reduce marimea partitiilor din sistem. In final ar trebui sa aveti toate partitiile puse la inceput de disk, cu zona libera si nealocata in partea dreapta.
+2. Deconectati masina virtuala, va asigurati ca aveti doar un vdi. Puteti sterge snapshot-urile sau sa clonati starea intr-un nou vdi ca [aici](#unit-snapshoturile).
+3. Creati un nou vdi cu marimea alocata de partitiile din masina virtuala. Daca partitiile ocupa, de exemplu, 14GB, atunci creati noul disc de 14.5GB (.5GB de rezerva, sa fim siguri ca nu se pierde informatie).
+```
+VBoxManage createmedium disk --filename=<absolute-path-to-file> --size=<valoarea-in-MB> --format=VDI --variant=Fixed
+```
+4. Copiati vdi original in cel nou creat.
+```
+VBoxManage clonemedium <source-uuid> <target-uuid> disk --existing --variant=Fixed
+```
+
+[VBoxManage docs](https://www.virtualbox.org/manual/ch08.html)
