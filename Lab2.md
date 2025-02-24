@@ -23,6 +23,6 @@ The malware should implement the following:
 
 [Here](https://github.com/tcostam/awesome-command-control) you can find inspiration for your OWN server. It can be written in any language you like.
 
-### 5. Antivirus bypassing methods
+### 5. Detection evasion techniques
 
-TODO: Add some resources.
+[RedTeaming-Tactics-and-Techniques](https://github.com/mantvydasb/RedTeaming-Tactics-and-Techniques/tree/master/offensive-security/defense-evasion) repository contains a collection of red teaming and pentesting notes, experiments, and techniques for offensive security.
